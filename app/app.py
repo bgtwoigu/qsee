@@ -5,12 +5,16 @@ from flask import Flask, jsonify
 from git import Repo, NoSuchPathError
 from os import environ
 
+import settings
+
+
 app = Flask(__name__)
+
 
 @app.route("/", methods=['GET'])
 def home():
     response = {'head': ''}
-    code_dir = environ.get("QSEE_CODE_DIR")
+    code_dir = settings.QSEE_CODE_DIR
     response['code_dir'] = code_dir
     try:
         repo = Repo(code_dir)
@@ -22,4 +26,8 @@ def home():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run()
+        if settings.DEBUG:
+            app.run(debug=True)
+        else:
+            app.run(debug=False, host='0.0.0.0')
+
