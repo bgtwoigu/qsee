@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 
-
 from flask import Flask, jsonify
 from git import Repo, NoSuchPathError
 from os import environ
 
-import settings
-
+from . import settings
 
 app = Flask(__name__)
-
 
 @app.route("/", methods=['GET'])
 def home():
@@ -24,10 +21,3 @@ def home():
         response['messages'] = 'no such path '
         response['status'] = 'failed'
     return jsonify(response)
-
-if __name__ == '__main__':
-        if settings.DEBUG:
-            app.run(debug=True)
-        else:
-            app.run(debug=False, host='0.0.0.0')
-
