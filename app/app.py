@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET'])
 def home():
     response = {'head': ''}
-    code_dir = environ.get("CODE_DIR")
+    code_dir = environ.get("QSEE_CODE_DIR")
     response['code_dir'] = code_dir
     try:
         repo = Repo(code_dir)
