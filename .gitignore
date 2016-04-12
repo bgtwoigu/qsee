@@ -2,4 +2,4 @@ env
 *.pyc
 __pycache__
 *.swp
-settings.py
+qsee/settings.py
