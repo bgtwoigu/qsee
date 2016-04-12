@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ecgps
+Group=ecgps
+WorkingDirectory=/opt/qsee
+UMask=0002
+ExecStart=/opt/qsee/env/bin/gunicorn --bind 0.0.0.0:5000 qsee:app
+
+[Install]
+WantedBy=multi-user.target
