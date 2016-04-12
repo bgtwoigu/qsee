@@ -12,6 +12,7 @@ Installation:
   chown {user}:{group} qsee
   git clone git@github.com:cschreep/qsee.git qsee
   cd qsee/
+  cp settings.example qsee/settings.py
   virtualenv -p python3 env
   source env/bin/activate
   pip install -r requirements.txt 
